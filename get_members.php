@@ -46,9 +46,12 @@ while ($row = mysqli_fetch_assoc($query)) {
 
     $photo = trim($row['photo']); 
 
-        $photo_url = $photo
-            ? "http://10.0.2.2/gym/gym_api/uploads/" . $photo // For flutter local testing
-            : "";
+    // 🔥 BUILD FULL IMAGE URL - Use actual domain
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+    $host = $_SERVER['HTTP_HOST'];
+    $baseUrl = $protocol . $host . "/gym/gym_api/uploads/";
+    
+    $photo_url = $photo ? $baseUrl . $photo : "";
 
     // ✅ STATUS LOGIC (IMPORTANT)
     $todayStart = strtotime(date('Y-m-d'));
