@@ -46,10 +46,8 @@ while ($row = mysqli_fetch_assoc($query)) {
 
     $photo = trim($row['photo']); 
 
-    // 🔥 BUILD FULL IMAGE URL - Use actual domain
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-    $host = $_SERVER['HTTP_HOST'];
-    $baseUrl = $protocol . $host . "/gym/gym_api/uploads/";
+    // 🔥 BUILD FULL IMAGE URL - Hardcoded production URL
+    $baseUrl = "https://pcstech.in/gym_api/uploads/";
     
     $photo_url = $photo ? $baseUrl . $photo : "";
 

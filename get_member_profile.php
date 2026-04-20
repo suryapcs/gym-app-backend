@@ -31,10 +31,8 @@ $res = $stmt->get_result();
 
 if ($row = $res->fetch_assoc()) {
 
-    // 🔥 BUILD FULL IMAGE URL - Use actual domain
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-    $host = $_SERVER['HTTP_HOST'];
-    $baseUrl = $protocol . $host . "/gym/gym_api/uploads/";
+    // 🔥 BUILD FULL IMAGE URL - Hardcoded production URL
+    $baseUrl = "https://pcstech.in/gym_api/uploads/";
 
     $row['photo'] = !empty($row['photo'])
         ? $baseUrl . $row['photo']
